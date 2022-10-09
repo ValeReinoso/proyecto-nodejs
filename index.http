@@ -1,0 +1,74 @@
+###Save Role
+POST http://localhost:2000/api/role/
+Content-Type: application/json
+
+{
+  "id": 3,
+  "name": "cliente"
+}
+
+
+### Sign Up
+POST http://localhost:2000/api/user/signup
+Content-Type: application/json
+
+{
+  "name": "Alejandra",
+  "lastName": "Reinoso",
+  "role": "3",
+  "email": "alejandra.reinoso.rios@gmail.com",
+  "password": "123456;abc;"
+}
+
+### Login
+POST http://localhost:2000/api/user/login
+Content-Type: application/json
+
+{
+  "email": "valentina.reinoso.rios@gmail.com",
+  "role": "2",
+  "password": "123456;abc;"
+}
+
+### Refresh user token
+GET http://localhost:2000/api/user/refreshAccessToken/x5kUjzl8T4TtQ1oE84vOB
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbGVudGluYS5yZWlub3NvLnJpb3NAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY7YWJjOyIsImlhdCI6MTY2NDQ5OTY4NiwiZXhwIjoxNjY0NTAwMjg2fQ.Sa5pEIrYMsS9TRLEWzkqIsE0_lFYWK03nSghU0tvKtU
+
+### Registrar Articulo Vendedor
+POST http://localhost:2000/api/user/createArticle
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6InokpXVCJ9.eyJlbWFpbCI6InZhbGVudGluYS5yZWlub3NvLnJpb3NAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY7YWJjOyIsImlhdCI6MTY2NDc1MzA3NywiZXhwIjoxNjY0NzUzNjc3fQ.U3xlBjOlNNuvTqY80YJcCpx_l8P0VYxb9mRfmxCXRyI
+
+{
+  "name": "Celular S20",
+  "description": "Celular de Alta Gama",
+  "price": 600000,
+  "image": "https://http2.mlstatic.com/D_NQ_NP_966886-MLA48427341404_122021-O.jpg",
+  "userId": "XQmIWn2aMIkqCpXRf1-d5"
+}
+
+### Recargar saldo del cliente
+POST http://localhost:2000/api/user/addBalance
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbGVudGluYS5yZWlub3NvLnJpb3NAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY7YWJjOyIsImlhdCI6MTY2NDc1MzA3NywiZXhwIjoxNjY0NzUzNjc3fQ.U3xlBjOlNNuvTqY80YJcCpx_l8P0VYxb9mRfmxCXRyI
+
+{
+  "balance": 600000,
+  "userId": "InHjRAra4bNI-qn0bzOcg"
+}
+
+### Recargar saldo del cliente
+POST http://localhost:2000/api/user/subBalance
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbGVudGluYS5yZWlub3NvLnJpb3NAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY7YWJjOyIsImlhdCI6MTY2NDc1MzA3NywiZXhwIjoxNjY0NzUzNjc3fQ.U3xlBjOlNNuvTqY80YJcCpx_l8P0VYxb9mRfmxCXRyI
+
+{
+  "balance": 1,
+  "userId": "InHjRAra4bNI-qn0bzOcg"
+}
+
+### Cliente compra articulo de un vendedor
+PATCH http://localhost:2000/api/user/InHjRAra4bNI-qn0bzOcg/article/R5QxBjO81GICsKR8EbCUu
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbGVudGluYS5yZWlub3NvLnJpb3NAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY7YWJjOyIsImlhdCI6MTY2NTI2ODMyMiwiZXhwIjoxNjY1MjY4OTIyfQ.PnBOIEqSF0p93DsnOh_7PxLRBEOaY3oQF6V_1TR80_M
+
