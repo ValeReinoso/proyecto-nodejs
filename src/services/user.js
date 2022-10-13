@@ -85,7 +85,7 @@ class UserService {
     const { salt, result: hash } = hashString(this.#password)
     const role = await new RoleService({ id: this.#role }).getRoleById()
 
-    await saveUser({
+    const user = await saveUser({
       id: nanoid(),
       name: this.#name,
       lastName: this.#lastName,
@@ -95,7 +95,7 @@ class UserService {
       role: role._id
     })
 
-    return await getAllUsers()
+    return user
   }
 
   async getUserById() {

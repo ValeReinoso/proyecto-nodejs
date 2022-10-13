@@ -45,10 +45,22 @@ const chargeBalanceSchema = Type.Object({
     })
   })
 
+const addClientArticleSchema  = Type.Object({
+    id:Type.String({
+        minLength: 21,
+        maxLength: 21
+    }),
+    userId: Type.String({
+        minLength: 21,
+        maxLength: 21
+    })
+  })
+
 module.exports = {
     storeUserSchema,
     updateUserSchema,
     userIdSchema,
     userLoginSchema,
-    chargeBalanceSchema
+    chargeBalanceSchema,
+    addClientArticleSchema
 }

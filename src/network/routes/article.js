@@ -3,20 +3,10 @@ const { nanoid } = require('nanoid')
 
 const { article: { articleSchema, articleIdSchema, updateArticleSchema } } = require('../../schemas')
 const { validatorCompiler } = require('./utils')
-const { mongo: { queries } } = require('../../database')
 const response = require('./response')
+const { ArticleService } = require('../../services')
 
 const ArticleRouter = Router()
-
-const { 
-    article: { 
-        getAllArticles, 
-        saveArticle, 
-        removeOneArticle, 
-        updateOneArticle,
-        getOneArticle
-    } 
-} = queries
 
 
 ArticleRouter.route('/article')

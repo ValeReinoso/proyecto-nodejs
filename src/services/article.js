@@ -4,7 +4,7 @@ const { nanoid } = require('nanoid')
 const UserService = require('./user')
 const { mongo: { queries } } = require('../database')
 const {
-    article: { saveArticle, getAllArticles, getOneArticle, updateOneArticle }
+    article: { saveArticle, getOneArticle, updateOneArticle }
 } = queries
 
 class ArticleService {
@@ -63,7 +63,7 @@ class ArticleService {
     if(user.role === '2')
         throw new httpErrors.BadRequest('Required role "2"')
 
-    await saveArticle({
+    const article = await saveArticle({
       id: nanoid(),
       name: this.#name,
       description: this.#description,
@@ -72,7 +72,7 @@ class ArticleService {
       userId: user._id
     })
 
-    return await getAllArticles()
+    return article
   }
 
   async buyArticle() {
@@ -93,10 +93,44 @@ class ArticleService {
       throw new httpErrors.BadRequest('You do not have enough balance')
 
     await new UserService({ userId: this.#userId, balance: article.price }).subBalance()
-    await new UserService({ userId: sellerUser.id, balance: article.price }).addBalance()
     
-    await updateOneArticle({
+    await new UserService({ userId: sellerUser.id, balance: article.price }).addBalance()
+
+    return await addClientArticle({
       id: article.id,
+      userId: clientUser.id
+    })
+  }
+
+  async verifyBuyArticle(){
+    if (!this.#articleId)
+      throw new httpErrors.BadRequest('Missing required field: articleId')
+
+    if(!this.#userId)
+      throw new httpErrors.BadRequest('Missing required field: userId')
+
+    const clientUser = await new UserService({ userId: this.#userId }).getUserById()
+    const article = await getOneArticle({ id: this.#articleId })
+
+    const difClientBalance = clientUser.balance - article.price 
+    
+    if (difClientBalance < 0) 
+      return false
+
+    return true
+  }
+
+  async addClientArticle() {
+    if (!this.#articleId)
+      throw new httpErrors.BadRequest('Missing required field: articleId')
+
+    if(!this.#userId)
+      throw new httpErrors.BadRequest('Missing required field: userId')
+
+    const clientUser = await new UserService({ userId: this.#userId }).getUserById()
+
+    await updateOneArticle({
+      id: this.#articleId,
       userId: clientUser._id
     })
   }

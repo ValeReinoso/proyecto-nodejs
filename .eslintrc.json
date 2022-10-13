@@ -2,14 +2,70 @@
     "env": {
         "browser": true,
         "commonjs": true,
-        "es2021": true
+        "es2021": true,
+        "jest/globals": true
     },
-    "extends": "standard",
+    "root": true,
+    "plugins": [
+        "import",
+        "prettier",
+        "jest"
+    ],
+    "extends": [
+        "standard",
+        "eslint:recommended",
+        "prettier"
+    ],
+    "rules": {
+        "arrow-parens": [
+            "error",
+            "as-needed"
+        ],
+        "import/no-extraneous-dependencies": [
+            "error",
+            {
+                "devDependencies": true
+            }
+        ],
+        "max-len": [
+            "error",
+            {
+                "code": 80,
+                "ignoreComments": true,
+                "ignoreReqExpLiterals": true,
+                "ignoreTemplateLiterals": true,
+                "ignoreTrailingComments": true,
+                "ignoreStrings": true,
+                "ignoreUrls": true
+            }
+        ]
+    },
+    "newline-before-return": "error",
+    "object-curly-spacing": [
+        "error",
+        "always"
+    ],
+    "object-shorthand": [
+        "error",
+        "always"
+    ],
+    "prefer-const": "error",
+    "prettier/prettier": [
+        "error",
+        {
+            "arrowParens": "avoid",
+            "bracketSpacing": true,
+            "printWidth": 80,
+            "quoteProps": "as-needed",
+            "semi": false,
+            "singleQuote": true,
+            "tabWidth": 2, 
+            "trailingComma": "none"
+        }
+    ],  
     "overrides": [
     ],
     "parserOptions": {
         "ecmaVersion": "latest"
-    },
-    "rules": {
     }
 }

@@ -6,22 +6,27 @@
   "scripts": {
     "service": "node -r dotenv/config src/index.js",
     "express": "nodemon -r dotenv/config src/index.js",
-    "test": "jest"
+    "test": "jest",
+    "test:e2e:local": "SET NODE_ENV=local && jest -i --testPathPattern=test/e2e"
   },
   "author": "ValeReinoso",
   "license": "ISC",
   "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/jest": "^29.1.2",
+    "axios": "^1.1.2",
     "dotenv": "^16.0.2",
     "eslint": "^8.23.1",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-n": "^15.2.5",
     "eslint-plugin-promise": "^6.0.1",
-    "jest": "^29.0.2",
+    "jest": "^29.1.2",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.20"
   },
   "dependencies": {
+    "@faker-js/faker": "^7.5.0",
     "@sinclair/typebox": "^0.24.42",
     "ajv": "^8.11.0",
     "ajv-formats": "^2.1.1",

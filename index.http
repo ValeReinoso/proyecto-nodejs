@@ -25,9 +25,9 @@ POST http://localhost:2000/api/user/login
 Content-Type: application/json
 
 {
-  "email": "valentina.reinoso.rios@gmail.com",
-  "role": "2",
-  "password": "123456;abc;"
+  "email": "helmer_lemke@hotmail.com",
+  "role": "3",
+  "password": "5-Jq$le`(p"
 }
 
 ### Refresh user token
@@ -63,12 +63,37 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbGVudGluYS5yZWlub3NvLnJpb3NAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY7YWJjOyIsImlhdCI6MTY2NDc1MzA3NywiZXhwIjoxNjY0NzUzNjc3fQ.U3xlBjOlNNuvTqY80YJcCpx_l8P0VYxb9mRfmxCXRyI
 
 {
-  "balance": 1,
+  "balance": 600000,
   "userId": "InHjRAra4bNI-qn0bzOcg"
 }
 
 ### Cliente compra articulo de un vendedor
-PATCH http://localhost:2000/api/user/InHjRAra4bNI-qn0bzOcg/article/R5QxBjO81GICsKR8EbCUu
+GET http://localhost:2000/api/user/InHjRAra4bNI-qn0bzOcg/article/R5QxBjO81GICsKR8EbCUu
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbGVudGluYS5yZWlub3NvLnJpb3NAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY7YWJjOyIsImlhdCI6MTY2NTI2ODMyMiwiZXhwIjoxNjY1MjY4OTIyfQ.PnBOIEqSF0p93DsnOh_7PxLRBEOaY3oQF6V_1TR80_M
+
+###
+GET http://localhost:2000/api/user/Oc-q-98aPSCK_QEU95lIo/article/w7EYZFe5BzCEW1z4jeq0k
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbGVudGluYS5yZWlub3NvLnJpb3NAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY7YWJjOyIsImlhdCI6MTY2NTI2ODMyMiwiZXhwIjoxNjY1MjY4OTIyfQ.PnBOIEqSF0p93DsnOh_7PxLRBEOaY3oQF6V_1TR80_M
+
+###
+POST http://localhost:2000/api/user/addClientArticle
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbGVudGluYS5yZWlub3NvLnJpb3NAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY7YWJjOyIsImlhdCI6MTY2NTI2ODMyMiwiZXhwIjoxNjY1MjY4OTIyfQ.PnBOIEqSF0p93DsnOh_7PxLRBEOaY3oQF6V_1TR80_M
+
+{
+  "articleId": "R5QxBjO81GICsKR8EbCUu",
+  "userId": "XQmIWn2aMIkqCpXRf1-d5"
+}
+
+###
+POST http://localhost:2000/api/user/verifyBuyArticle
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InZhbGVudGluYS5yZWlub3NvLnJpb3NAZ21haWwuY29tIiwicGFzc3dvcmQiOiIxMjM0NTY7YWJjOyIsImlhdCI6MTY2NTI2ODMyMiwiZXhwIjoxNjY1MjY4OTIyfQ.PnBOIEqSF0p93DsnOh_7PxLRBEOaY3oQF6V_1TR80_M
+
+{
+  "articleId": "R5QxBjO81GICsKR8EbCUu",
+  "userId": "XQmIWn2aMIkqCpXRf1-d5"
+}
 

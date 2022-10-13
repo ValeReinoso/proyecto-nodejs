@@ -2,7 +2,7 @@ const { Router } = require('express')
 const httpErrors = require('http-errors')
 
 const { 
-    user: { storeUserSchema, updateUserSchema, userIDSchema, userLoginSchema, chargeBalanceSchema },
+    user: { storeUserSchema, updateUserSchema, userIDSchema, userLoginSchema, chargeBalanceSchema, addClientArticleSchema},
     article: { storeArticleSchema }
 } = require('../../schemas')
 const { auth, validatorCompiler } = require('./utils')
@@ -252,8 +252,8 @@ UserRouter.route('/user/subBalance/').post(
   }
 )
 
-UserRouter.route('/user/:userId/article/:articleId').patch(
-  //validatorCompiler(chargeBalanceSchema, 'params'),
+UserRouter.route('/user/:userId/article/:articleId').get(
+  validatorCompiler(chargeBalanceSchema, 'params'),
   //auth.verifyIsCurrentUser(),
   async (req, res, next) => {
     try {
@@ -275,5 +275,49 @@ UserRouter.route('/user/:userId/article/:articleId').patch(
     }
   }
 )
+
+UserRouter.route('/user/addClientArticle').post( 
+  //validatorCompiler(addClientArticleSchema, 'body'),
+    async (req, res, next) => {
+      try {
+          const { body: { articleId, userId } } = req
+
+          response({
+              error: false,
+              message: await new ArticleService({
+                articleId,
+                userId
+              }).addClientArticle(),
+              res,
+              status: 201
+          })
+          
+      } catch (error) {
+          next(error)
+      }
+    }
+  )
+
+  UserRouter.route('/user/verifyBuyArticle').post( 
+    //validatorCompiler(addClientArticleSchema, 'body'),
+      async (req, res, next) => {
+        try {
+            const { body: { articleId, userId } } = req
+
+            response({
+                error: false,
+                message: await new ArticleService({
+                  articleId,
+                  userId
+                }).verifyBuyArticle(),
+                res,
+                status: 201
+            })
+            
+        } catch (error) {
+            next(error)
+        }
+      }
+    )
 
 module.exports = UserRouter
