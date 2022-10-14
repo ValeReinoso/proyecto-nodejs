@@ -2,7 +2,7 @@ const { server } = require('../../src/network')
 const { faker } = require('@faker-js/faker')    
 const axios = require('axios')
 
-const URL = `http://localhost:${process.env.PORT || 2000}` 
+const URL = `http://localhost:${process.env.PORT || 2000}`
 
 
 beforeAll(async () => {

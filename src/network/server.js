@@ -4,7 +4,7 @@ const morgan = require('morgan')
 const { mongo: { dbConnection  } } = require('../database')
 const applyRoutes = require('./router')
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || '2000'
 
 class Server {
     #app

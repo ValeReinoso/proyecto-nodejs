@@ -1,6 +1,6 @@
-# Curso de Node.js - Escalab - Generación 10
+# Proyecto de Node.js
 
-[![E2E tests](https://github.com/Escalab-Academy/curso_node_gen_10/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/Escalab-Academy/curso_node_gen_10/actions/workflows/e2e-test.yml)
+[![E2E tests](https://github.com/ValeReinoso/proyecto-nodejs/actions/workflows/e2e-test.yml/badge.svg?branch=master)](https://github.com/ValeReinoso/proyecto-nodejs/actions/workflows/e2e-test.yml)
 
 ## Pre requisitos
 
